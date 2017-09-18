@@ -5,19 +5,29 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.File;
 
+/**
+ * Created by Easabella.
+ */
+public class JPicturePane extends JPanel {
 
-class MyPanel extends JPanel {
     Image image = null;
+
+    public Image getImage() {
+        return image;
+    }
+
+    public void setPicture(String picFileName) {
+        try {
+            image = ImageIO.read(new File(picFileName));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-
-        try {
-            if (image == null) {
-                //   image = ImageIO.read(new File("D:\\zsfwork\\SHOW\\flower_nl.jpg"));
-                image = ImageIO.read(new File("E:\\git_image\\bmp\\big.bmp"));
-            }
+        if (image != null) {
 
             int w = getWidth();
             int h = getHeight();
@@ -35,24 +45,7 @@ class MyPanel extends JPanel {
 
             g.drawImage(image, 0, 0, iw, ih, null);
 
-
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
         }
-    }
-}
-
-/**
- * Created by Easabella.
- */
-public class JPicturePane extends JScrollPane {
-
-    MyPanel panel = new MyPanel();
-
-    public JPicturePane() {
-        super(VERTICAL_SCROLLBAR_ALWAYS, HORIZONTAL_SCROLLBAR_ALWAYS);
-        setViewportView(panel);
     }
 
 }

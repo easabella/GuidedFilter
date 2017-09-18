@@ -15,6 +15,8 @@ class MyFrame extends JFrame {
 
     private JPicturePane panelPic1 = new JPicturePane();
     private JPicturePane panelPic2 = new JPicturePane();
+    private JPictureObserver panelObserver1 = new JPictureObserver();
+    private JPictureObserver panelObserver2 = new JPictureObserver();
 
     public MyFrame() {
         this.setTitle("Guide Filter UI");
@@ -28,7 +30,7 @@ class MyFrame extends JFrame {
         getContentPane().add(panelMain);
 
         JPanel panelPic = new JPanel();
-        panelPic.setLayout(new GridLayout(1,2));
+        panelPic.setLayout(new GridLayout(2,2));
         panelMain.add(panelPic, BorderLayout.CENTER);
 
        // panelPic1.setBorder(new LineBorder(Color.RED, 10));
@@ -37,6 +39,11 @@ class MyFrame extends JFrame {
 
         panelPic.add(panelPic1);
         panelPic.add(panelPic2);
+        panelPic.add(panelObserver1);
+        panelPic.add(panelObserver2);
+
+        panelPic1.setPicture("E:\\git_image\\bmp\\big.bmp");
+        panelObserver1.setObservedPane(panelPic1);
 
         JPanel panelBtn = new JPanel(new GridLayout(1, 10));
         for (int i = 0; i < 10; i++) {

@@ -16,4 +16,3 @@ class Main {
         SwingUtilities.invokeLater(MyFrame::new);
     }
 }
-
