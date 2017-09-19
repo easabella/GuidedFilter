@@ -1,9 +1,6 @@
 package github.easabella;
 
 import javax.swing.*;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -13,10 +10,7 @@ import java.net.URISyntaxException;
 
 class MyFrame extends JFrame {
 
-    private JPicturePane panelPic1 = new JPicturePane();
-    private JPicturePane panelPic2 = new JPicturePane();
-    private JPictureObserver panelObserver1 = new JPictureObserver();
-    private JPictureObserver panelObserver2 = new JPictureObserver();
+
 
     public MyFrame() {
         this.setTitle("Guide Filter UI");
@@ -29,23 +23,18 @@ class MyFrame extends JFrame {
         panelMain.setLayout(new BorderLayout());
         getContentPane().add(panelMain);
 
-        JPanel panelPic = new JPanel();
-        panelPic.setLayout(new GridLayout(2,2));
-        panelMain.add(panelPic, BorderLayout.CENTER);
+
+
+        MonitorCenter monitorCenter = new MonitorCenter();
+        panelMain.add(monitorCenter, BorderLayout.CENTER);
 
        // panelPic1.setBorder(new LineBorder(Color.RED, 10));
        // panelPic2.setBorder(new LineBorder(Color.GREEN, 10));
 
 
-        panelPic.add(panelPic1);
-        panelPic.add(panelPic2);
-        panelPic.add(panelObserver1);
-        panelPic.add(panelObserver2);
 
-        panelPic1.setPicture("E:\\git_image\\bmp\\big.bmp");
-        panelObserver1.setObservedPane(panelPic1);
 
-        JPanel panelBtn = new JPanel(new GridLayout(1, 10));
+       /* JPanel panelBtn = new JPanel(new GridLayout(1, 10));
         for (int i = 0; i < 10; i++) {
 
             panelBtn.add(new JButton(Integer.toString(i)));
@@ -53,7 +42,7 @@ class MyFrame extends JFrame {
         }
 
         panelMain.add(panelBtn, BorderLayout.SOUTH);
-
+*/
         this.setVisible(true);
 
     }

@@ -1,27 +1,15 @@
 package github.easabella;
 
-import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 
 /**
  * Created by Easabella.
  */
-public class JPicturePane extends JPanel {
+public class JPanelPictureOutline extends JPanelPictureBase {
+    MonitorCenter monitorCenter;
 
-    Image image = null;
-
-    public Image getImage() {
-        return image;
-    }
-
-    public void setPicture(String picFileName) {
-        try {
-            image = ImageIO.read(new File(picFileName));
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public JPanelPictureOutline(MonitorCenter monitorCenter) {
+        this.monitorCenter = monitorCenter;
     }
 
     public void paintComponent(Graphics g) {
@@ -37,14 +25,21 @@ public class JPicturePane extends JPanel {
 
             if (iw > w) {
                 iw = w;
-                ih = h*iw/w;
+                ih = h * iw / w;
             } else if (ih > h) {
                 ih = h;
-                iw = w*ih/h;
+                iw = w * ih / h;
             }
 
             g.drawImage(image, 0, 0, iw, ih, null);
 
+        }
+
+        /*if (monitorCenter.isPosFixed())*/ {
+            int x = monitorCenter.getPosX();
+            int y = monitorCenter.getPosY();
+            g.drawLine(x, y - 5, x, y + 5);
+            g.drawLine(x - 5, y, x + 5, y);
         }
     }
 
