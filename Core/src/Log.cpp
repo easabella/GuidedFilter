@@ -3,7 +3,7 @@
 
 FILE* __init()
 {
-	return fopen("log.txt", "w+");
+    return fopen("log.txt", "w+");
 }
 
 

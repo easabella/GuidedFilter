@@ -1,5 +1,6 @@
 package github.easabella;
 
+import java.util.List;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.InputEvent;
@@ -8,8 +9,9 @@ import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
-class MyFrame extends JFrame {
+import java.util.Arrays;
 
+class MyFrame extends JFrame {
 
 
     public MyFrame() {
@@ -24,25 +26,37 @@ class MyFrame extends JFrame {
         getContentPane().add(panelMain);
 
 
-
         MonitorCenter monitorCenter = new MonitorCenter();
         panelMain.add(monitorCenter, BorderLayout.CENTER);
 
-       // panelPic1.setBorder(new LineBorder(Color.RED, 10));
-       // panelPic2.setBorder(new LineBorder(Color.GREEN, 10));
+
+        JPanel panelInput = new JPanel(new GridLayout(10, 2));
+        panelInput.setPreferredSize(new Dimension(300, 0));
 
 
+        List<String> lst = Arrays.asList("r", "delta", "w(omega)");
 
+        for (String aLst : lst) {
+            JLabel label = new JLabel(aLst);
+            label.setHorizontalAlignment(JLabel.RIGHT);
+            panelInput.add(label);
 
-       /* JPanel panelBtn = new JPanel(new GridLayout(1, 10));
-        for (int i = 0; i < 10; i++) {
-
-            panelBtn.add(new JButton(Integer.toString(i)));
+            JTextField textField = new JTextField("0");
+            textField.setHorizontalAlignment(JTextField.RIGHT);
+            panelInput.add(textField);
+            //panelBtn.add(new JButton(Integer.toString(i)));
 
         }
 
-        panelMain.add(panelBtn, BorderLayout.SOUTH);
-*/
+        for (int i = 1; i <= 20-lst.size()*2-1; i++){
+            panelInput.add(new JLabel(""));
+        }
+
+        panelInput.add(new JButton("Start"));
+
+
+        panelMain.add(panelInput, BorderLayout.EAST);
+
         this.setVisible(true);
 
     }

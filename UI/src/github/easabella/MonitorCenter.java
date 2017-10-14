@@ -3,6 +3,7 @@ package github.easabella;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.File;
 import java.util.ArrayList;
 
 /**
@@ -132,6 +133,7 @@ public class MonitorCenter extends JPanel {
         setFocusable(true);
         requestFocusInWindow();
 
+
         addMouseWheelListener(mouseAdapter);
         addKeyListener(keyAdapter);
 
@@ -140,8 +142,8 @@ public class MonitorCenter extends JPanel {
         JPanelPictureDetail panelPicDetail1 = new JPanelPictureDetail(this, panelPicOutline1);
         JPanelPictureDetail panelPicDetail2 = new JPanelPictureDetail(this, panelPicOutline2);
 
-        panelPicOutline1.setPicture("E:\\git_image\\bmp\\big.bmp");
-        //panelPicOutline2.setPicture("E:\\git_image\\bmp\\big.bmp");
+        panelPicOutline1.setPicture("E:\\git_image\\bmp\\11.bmp");
+        panelPicOutline2.setPicture("E:\\git_image\\bmp\\out.bmp");
 
         addPairOfPanel(panelPicOutline1, panelPicDetail1);
         addPairOfPanel(panelPicOutline2, panelPicDetail2);
@@ -155,6 +157,7 @@ public class MonitorCenter extends JPanel {
         add(btn, BorderLayout.NORTH);
         btn.addActionListener(e -> {
             JFileChooser jfc = new JFileChooser();
+            jfc.setCurrentDirectory(new File("."));
             if (jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
                 //解释下这里,弹出个对话框,可以选择要上传的文件,如果选择了,就把选择的文件的绝对路径打印出来,有了绝对路径,通过JTextField的settext就能设置进去了,那个我没写
                 String path = jfc.getSelectedFile().getAbsolutePath();

@@ -17,25 +17,26 @@ public class JPanelPictureOutline extends JPanelPictureBase {
 
         if (image != null) {
 
-            int w = getWidth();
-            int h = getHeight();
+            int w = getWidth();   //window w
+            int h = getHeight();  //window h
 
-            int iw = image.getWidth(null);
-            int ih = image.getHeight(null);
+            int iw = image.getWidth(null);   // image w
+            int ih = image.getHeight(null);  // image h
 
-            if (iw > w) {
-                iw = w;
-                ih = h * iw / w;
-            } else if (ih > h) {
-                ih = h;
-                iw = w * ih / h;
-            }
+            double ratio_w = (double) w / iw;
+            double ratio_h = (double) h / ih;
 
-            g.drawImage(image, 0, 0, iw, ih, null);
+            int showW = (ratio_w <= ratio_h) ? (w) : (iw * h / ih);
+            int showH = (ratio_h <= ratio_w) ? (h) : (ih * w / iw);
+
+            int offw = (w - showW) / 2;
+            int offh = (h - showH) / 2;
+
+            g.drawImage(image, offw, offh, showW, showH, null);
 
         }
 
-        /*if (monitorCenter.isPosFixed())*/ {
+        {
             int x = monitorCenter.getPosX();
             int y = monitorCenter.getPosY();
             g.drawLine(x, y - 5, x, y + 5);
