@@ -35,6 +35,7 @@ public class JPanelPictureDetail extends JPanelPictureBase{
         int ratio = monitorCenter.getRatio();
 
         if (image != null) {
+            /*
             int iw = image.getWidth(null)*ratio;
             int ih = image.getHeight(null)*ratio;
 
@@ -42,11 +43,25 @@ public class JPanelPictureDetail extends JPanelPictureBase{
             int offy = -y * ih / h + h/2;
 
             g.drawImage(image, offx, offy, iw, ih, null);
+            */
+
+            PosMapping.drawImage_SpecialPosAsCenterMode(g, image, this, monitorCenter.getPosX(), monitorCenter.getPosY(), monitorCenter.getRatio());
 
         }
 
-        g.drawLine(w/2, 0, w/2, h);
-        g.drawLine(0, h/2, w, h/2);
+//        Graphics2D g2d = (Graphics2D) g;
+//        Stroke dash = new BasicStroke(
+//        2.5f, BasicStroke.CAP_BUTT,
+//                BasicStroke.JOIN_ROUND, 3.5f, new float[] { 15, 10, },
+//                0f);
+//
+//        g2d.setStroke(dash);
+//        g2d.setColor(Color.red);
+
+        int redis = (w > h) ? (h/4) : (w/4);
+
+        g.drawLine(w/2, h/2-redis, w/2, h/2+redis);
+        g.drawLine(w/2 - redis, h/2, w/2+redis, h/2);
 
         g.drawString(String.format("(%d,%d) %dx", x, y, ratio), 20, 20);
     }

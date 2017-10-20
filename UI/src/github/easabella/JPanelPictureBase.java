@@ -19,6 +19,8 @@ public class JPanelPictureBase extends JPanel {
     }
 
     public void setPicture(String picFileName) {
+
+        image = null;
         try {
             image = ImageIO.read(new File(picFileName));
         } catch (Exception e) {

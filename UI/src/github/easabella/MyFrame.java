@@ -30,32 +30,8 @@ class MyFrame extends JFrame {
         panelMain.add(monitorCenter, BorderLayout.CENTER);
 
 
-        JPanel panelInput = new JPanel(new GridLayout(10, 2));
-        panelInput.setPreferredSize(new Dimension(300, 0));
-
-
-        List<String> lst = Arrays.asList("r", "delta", "w(omega)");
-
-        for (String aLst : lst) {
-            JLabel label = new JLabel(aLst);
-            label.setHorizontalAlignment(JLabel.RIGHT);
-            panelInput.add(label);
-
-            JTextField textField = new JTextField("0");
-            textField.setHorizontalAlignment(JTextField.RIGHT);
-            panelInput.add(textField);
-            //panelBtn.add(new JButton(Integer.toString(i)));
-
-        }
-
-        for (int i = 1; i <= 20-lst.size()*2-1; i++){
-            panelInput.add(new JLabel(""));
-        }
-
-        panelInput.add(new JButton("Start"));
-
-
-        panelMain.add(panelInput, BorderLayout.EAST);
+        JPanelSideBar panelSideBar = new JPanelSideBar();
+        panelMain.add(panelSideBar, BorderLayout.EAST);
 
         this.setVisible(true);
 

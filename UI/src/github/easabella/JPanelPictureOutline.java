@@ -1,5 +1,6 @@
 package github.easabella;
 
+import javax.swing.*;
 import java.awt.*;
 
 /**
@@ -10,6 +11,11 @@ public class JPanelPictureOutline extends JPanelPictureBase {
 
     public JPanelPictureOutline(MonitorCenter monitorCenter) {
         this.monitorCenter = monitorCenter;
+
+        setLayout(new FlowLayout(FlowLayout.LEFT));
+
+        JButton btn = new JButtonOpenFile("Open", this);
+        add(btn);
     }
 
     public void paintComponent(Graphics g) {
@@ -17,22 +23,7 @@ public class JPanelPictureOutline extends JPanelPictureBase {
 
         if (image != null) {
 
-            int w = getWidth();   //window w
-            int h = getHeight();  //window h
-
-            int iw = image.getWidth(null);   // image w
-            int ih = image.getHeight(null);  // image h
-
-            double ratio_w = (double) w / iw;
-            double ratio_h = (double) h / ih;
-
-            int showW = (ratio_w <= ratio_h) ? (w) : (iw * h / ih);
-            int showH = (ratio_h <= ratio_w) ? (h) : (ih * w / iw);
-
-            int offw = (w - showW) / 2;
-            int offh = (h - showH) / 2;
-
-            g.drawImage(image, offw, offh, showW, showH, null);
+            PosMapping.drawImage_FitMode(g, image, this);
 
         }
 

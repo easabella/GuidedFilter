@@ -133,7 +133,6 @@ public class MonitorCenter extends JPanel {
         setFocusable(true);
         requestFocusInWindow();
 
-
         addMouseWheelListener(mouseAdapter);
         addKeyListener(keyAdapter);
 
@@ -148,27 +147,9 @@ public class MonitorCenter extends JPanel {
         addPairOfPanel(panelPicOutline1, panelPicDetail1);
         addPairOfPanel(panelPicOutline2, panelPicDetail2);
 
-
         Panel panel = new Panel();
         setLayout(new BorderLayout());
         add(panel, BorderLayout.CENTER);
-
-        JButton btn = new JButton("Open");
-        add(btn, BorderLayout.NORTH);
-        btn.addActionListener(e -> {
-            JFileChooser jfc = new JFileChooser();
-            jfc.setCurrentDirectory(new File("."));
-            if (jfc.showOpenDialog(this) == JFileChooser.APPROVE_OPTION) {
-                //解释下这里,弹出个对话框,可以选择要上传的文件,如果选择了,就把选择的文件的绝对路径打印出来,有了绝对路径,通过JTextField的settext就能设置进去了,那个我没写
-                String path = jfc.getSelectedFile().getAbsolutePath();
-                System.out.println();
-                panelPicOutline1.setPicture(path);
-                panelPicOutline2.setPicture(path);
-
-                updateUI();
-            }
-        });
-
 
         panel.setLayout(new GridLayout(2, lstPanelOutline.size()));
         for (JPanelPictureOutline p : lstPanelOutline) {
