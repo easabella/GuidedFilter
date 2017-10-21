@@ -2,6 +2,7 @@ package github.easabella;
 
 import java.util.List;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
@@ -26,12 +27,18 @@ class MyFrame extends JFrame {
         getContentPane().add(panelMain);
 
 
-        MonitorCenter monitorCenter = new MonitorCenter();
+        JStatusBar statusBar = new JStatusBar();
+        panelMain.add(statusBar,BorderLayout.SOUTH);
+
+        MonitorCenter monitorCenter = new MonitorCenter(statusBar);
+        monitorCenter.setBorder(new BevelBorder(BevelBorder.RAISED));
         panelMain.add(monitorCenter, BorderLayout.CENTER);
 
 
         JPanelSideBar panelSideBar = new JPanelSideBar();
         panelMain.add(panelSideBar, BorderLayout.EAST);
+
+
 
         this.setVisible(true);
 

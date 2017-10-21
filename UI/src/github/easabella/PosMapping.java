@@ -4,22 +4,6 @@ package github.easabella;
 import javax.swing.*;
 import java.awt.*;
 
-class Pos{
-
-    public Pos(int x, int y) {
-        this.x = x;
-        this.y = y;
-
-    }
-
-    public int x;
-    public int y;
-
-    public void mul(int amplificationFactor) {
-        x  *= amplificationFactor;
-        y *= amplificationFactor;
-    }
-}
 
 /**
  * Created by Easabella.

@@ -15,6 +15,15 @@ public class MonitorCenter extends JPanel {
     private int posX = -1;
     private int posY = -1;
 
+    JStatusBar statusBar = null;
+
+    public void update(){
+        statusBar.setPositionInfo(new Pos(posX, posY));
+        statusBar.setRatioInfo(ratio);
+
+        statusBar.updateUI();
+    }
+
     public int getRatio() {
         return ratio;
     }
@@ -128,8 +137,12 @@ public class MonitorCenter extends JPanel {
 
     }
 
+    public JStatusBar getStatusBar() {
+        return statusBar;
+    }
 
-    public MonitorCenter() {
+    public MonitorCenter(JStatusBar statusBar) {
+        this.statusBar = statusBar;
         setFocusable(true);
         requestFocusInWindow();
 

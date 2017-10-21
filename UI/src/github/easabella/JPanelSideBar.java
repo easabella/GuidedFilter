@@ -1,6 +1,7 @@
 package github.easabella;
 
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 import java.awt.*;
 import java.util.*;
 
@@ -13,7 +14,7 @@ public class JPanelSideBar extends JPanel{
 
         super(new GridLayout(10, 2));
         setPreferredSize(new Dimension(200, 0));
-
+        setBorder(new BevelBorder(BevelBorder.RAISED));
 
         java.util.List<String> lst = Arrays.asList("r", "delta", "w(omega)");
 
