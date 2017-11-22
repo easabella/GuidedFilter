@@ -66,6 +66,15 @@ public class MonitorCenter extends JPanel {
         }
     };
 
+    public void showButton(boolean s){
+
+        for (JPanelPictureOutline p : lstPanelOutline) {
+            p.showButton(s);
+        }
+
+
+    }
+
     MouseAdapter mouseAdapter = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
@@ -95,6 +104,10 @@ public class MonitorCenter extends JPanel {
 
         @Override
         public void mouseMoved(MouseEvent e) {
+
+                showButton(e.getX() < 10);
+
+
 
             if (isPosFixed()) {
                 return;
@@ -163,6 +176,7 @@ public class MonitorCenter extends JPanel {
         Panel panel = new Panel();
         setLayout(new BorderLayout());
         add(panel, BorderLayout.CENTER);
+        //add(new JPanelSideBar(), BorderLayout.EAST);
 
         panel.setLayout(new GridLayout(2, lstPanelOutline.size()));
         for (JPanelPictureOutline p : lstPanelOutline) {

@@ -36,7 +36,7 @@ class MyFrame extends JFrame {
 
 
         JPanelSideBar panelSideBar = new JPanelSideBar();
-        panelMain.add(panelSideBar, BorderLayout.EAST);
+        panelMain.add(panelSideBar, BorderLayout.WEST);
 
 
 
